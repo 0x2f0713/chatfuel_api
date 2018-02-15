@@ -1,6 +1,6 @@
 <?php
-
-$googleapikey = "AIzaSyBxApso1lWf0JDnRvp4Sq8xdEvNARc9dpU";
+#Need to edit: YOUR-KEY and YOUR-REFERER-URL
+$googleapikey = "YOUR-KEY";
 $longurl = $_GET['link'];
 
 
@@ -18,8 +18,8 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_HTTPHEADER, array(
         'Content-Type: application/json',
-        'Content-Length: ' . strlen($data_string),
-        'referer: https://www.namhaiit.ml') #Hàm strlen() sẽ lấy chiều dài của chuỗi bao gồm cả các khoảng trắng ở đầu và cuối chuỗi. Hàm trả về kết quả số nguyên là chiều dài của chuỗi truyền vào.
+        'Content-Length: ' . strlen($data_string),#Hàm strlen() sẽ lấy chiều dài của chuỗi bao gồm cả các khoảng trắng ở đầu và cuối chuỗi. Hàm trả về kết quả số nguyên là chiều dài của chuỗi truyền vào.
+        'referer: YOUR-REFERER-URL') 
 );
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
