@@ -1,6 +1,5 @@
-<?php
-$req = $_GET['q'];
-$fp = file_get_contents_curl('https://translate.googleapis.com/translate_a/single?client=gtx&sl='.$_GET['src_lang'].'&tl='.$_GET['tar_lang'].'&dt=t&q='.urlencode($_GET['q']),5 );
+<?php 
+$data = file_get_contents_curl('http://translate.googleapis.com/translate_a/single?client=gtx&sl='.$_GET['src_lang'].'&tl='.$_GET['tar_lang'].'&dt=t&q='.urlencode($_GET['q']),5 );
 
 # Hàm mình tham khảo trên GitHub: https://gist.github.com/jrivero/5598138 .
 function file_get_contents_curl($url, $retries=5)
@@ -9,15 +8,10 @@ function file_get_contents_curl($url, $retries=5)
     if (extension_loaded('curl') === true)
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url); // The URL to fetch. This can also be set when initializing a session with curl_init().
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); // TRUE to return the transfer as a string of the return value of curl_exec() instead of outputting it out directly.
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); // The number of seconds to wait while trying to connect.
-        curl_setopt($ch, CURLOPT_USERAGENT, $ua); // The contents of the "User-Agent: " header to be used in a HTTP request.
-        curl_setopt($ch, CURLOPT_FAILONERROR, TRUE); // To fail silently if the HTTP code returned is greater than or equal to 400.
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE); // To follow any "Location: " header that the server sends as part of the HTTP header.
-        curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE); // To automatically set the Referer: field in requests where it follows a Location: redirect.
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10); // The maximum number of seconds to allow cURL functions to execute.
-        curl_setopt($ch, CURLOPT_MAXREDIRS, 5); // The maximum number of redirects
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_USERAGENT, $ua);
         $result = curl_exec($ch);
         curl_close($ch);
     }
@@ -37,7 +31,7 @@ function file_get_contents_curl($url, $retries=5)
     return $result;
 }
 # Convert dữ liệu xâu thành mảng.
-    $data = (array) json_decode($fp);
+    $data = (array) json_decode($data);
 # Mảng chứa tên ngôn ngữ.
     $lang = array(
         'af' => 'Afrikaans',
@@ -105,35 +99,24 @@ function file_get_contents_curl($url, $retries=5)
         'id' => 'Indonesia',
         'yi' => 'Yiddish',
 );
-# Đếm số câu.
-    $text = '';
-    $count = 0;
-    for ($i=0; $i <= strlen($req); $i++) { 
-            if (($req[$i] == '.' or $req[$i] == '!' or $req[$i] == '?') && $req[$i+1] == ' ') {
-            $count = $count + 1;
-        }
-    }
-    $count = $count +1;
 # Tạo chuỗi kết quả.
-    for ($i=0; $i <= $count; $i++) { 
-        $text = $text.$data[0][$i][0];
+    $text = '';
+    foreach ($data[0] as $key => $value) {
+        $text .= $value[0];
     }
+
 # Tạo đoạn tin nhắn.
     $reply = array(
         'messages' => array(
             0 => array(
-                'text' => 'Bot đang dịch nè. Đợi một nốt nhạc thôi. <3'
+                'text' => 'Bot đang dịch nè. Đợi một nốt nhạc thôi.'
             ),
             1 => array(
                 'text' => '*Bản dịch:* ' .$text
             ),
             2 => array(
-                'text' => 'Số câu: '.$count
-            ),
-            3 => array(
                 'text' => 'Ngôn ngữ của văn bản gốc: Tiếng '.$lang[$data[2]]
             )
         ),
 );
     echo json_encode($reply);
-?>
