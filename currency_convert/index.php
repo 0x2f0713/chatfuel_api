@@ -1,16 +1,14 @@
 <?php
  header('Content-Type: text/html; charset=utf-8');
- $sotien = $_GET[amount];
- $ci = $_GET[ci];
- $co = $_GET[co];
- $json = file_get_contents('http://api.rest7.com/v1/currency_convert.php?amount='.$sotien.'&currency_in='.$ci.'&currency_out='.$co);
- $text = json_decode($json, true);
- $rep  = array(
-     'messages' => array(
-         0 => array(
-             'text' => $_GET[amount].' '.$_GET[ci].' = '.$text['amount'].' '.$_GET[co]
-         )
-     )
- );
- echo json_encode($rep);
+$array = json_decode(file_get_contents("http://free.currencyconverterapi.com/api/v5/convert?q=$_GET[from]_$_GET[to]&compact=y"),TRUE);
+$value = $array["$_GET[from]_$_GET[to]"][val] * $_GET[amount];
+$rep  = array(
+		'messages' => array(
+				0 => array(
+						'text' => "$_GET[amount] $_GET[from] = $value $_GET[to]"
+				)
+		)
+);
+echo json_encode($rep);
+
 ?>
