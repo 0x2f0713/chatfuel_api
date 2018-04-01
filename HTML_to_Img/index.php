@@ -41,10 +41,12 @@ $image = (isset($_GET[url]) == TRUE && preg_match($boolean, $_GET[url]) == 1 ) ?
 // Tạo chuỗi tin nhắn
 $reply = array(
 	"messages" => array(
-		"attachment" => array(
-			"type" => "image",
-			"payload" => array(
-				"url" => $image
+		0 => array(
+			"attachment" => array(
+				"type" => "image",
+				"payload" => array(
+					"url" => $image
+				)
 			)
 		)
 	)
