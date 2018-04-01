@@ -24,8 +24,8 @@ $thangamlich = preg_replace('/[\t]/', '', $content->find('td.ngayduong',0)->plai
 $reply = array(
     'messages' => array(
         0 => array(
-            'text' => "Ngày " .$ngayamlich[0] . 
-        ), 
+            'text' => "Ngày " .$ngayamlich[0] . $thangamlich 
+        ) 
     )
 );
 // Encode tin nhắn dưới dạng JSON
