@@ -1,4 +1,4 @@
-> If you are foreigner, please read at ![here](#instruction-for-foreigner).
+> If you are foreigner, please read at [here](https://github.com/0x2f0713/chatfuel_api/blob/master/GG_Translate/README.md#instruction-for-foreigner).
 # API Google Dịch cho ChatFuel
 ### Tham số
 * *src_lang*: Ngôn ngữ của văn bản cần dịch
