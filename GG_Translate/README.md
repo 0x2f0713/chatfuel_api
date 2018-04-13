@@ -1,4 +1,4 @@
->> If you are foreigner, please read at ![here](#foreign).
+> If you are foreigner, please read at ![here](#instruction-for-foreigner).
 # API Google Dịch cho ChatFuel
 ### Tham số
 * *src_lang*: Ngôn ngữ của văn bản cần dịch
@@ -176,7 +176,7 @@
 | Yoruba 	| yo 	|
 | Zulu 	| zu 	|
 
-<h2 id="foreigner">Instruction for foreigner</h2>
+## Instruction for foreigner
 
 | Language Name | Code | Language Name | Language Code |
 | --- | --- | --- | --- |
