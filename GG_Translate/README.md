@@ -1,7 +1,7 @@
 > If you are foreigner, please read at [here](https://github.com/0x2f0713/chatfuel_api/blob/master/GG_Translate/README.md#instruction-for-foreigner).
 # API Google Dịch cho ChatFuel
 ### Tham số
-* *src_lang*: Ngôn ngữ của văn bản cần dịch
+* *src_lang*: Ngôn ngữ của văn bản cần dịch (*auto* để tự động xác định ngôn ngữ của văn bản cần dịch)
 * *tar_lang*: Ngôn ngữ của văn bản kết quả
 * *q*: Văn bản cần dịch
 * Phương thức: GET
