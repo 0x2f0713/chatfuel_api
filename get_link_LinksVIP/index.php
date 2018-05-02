@@ -14,7 +14,7 @@
     'Content-Type: application/x-www-form-urlencoded; charset=UTF-8',
     'DNT: 1',
     'Referer: https://linksvip.net/',
-    'Cookie: __cfduid=d4caae757dd449d8a3fdfaabddad0e48a1512302783; user=huynguyenvn.huynguyen%40gmail.com; pass=da54f18eb2c83e2df54abce273309123; __zlcmid=k0gyT6eoKkbPCg; PHPSESSID=5iunl3bebj0b76ag5je1pvlgt7; __atuvc=63%7C2%2C6%7C3'
+    'Cookie: PHPSESSID=bkhebcn55r4d406qet6h5lttf6; user=homnayngaycuoiem%40win10.vn; pass=b21ac72ea6cad077fe6d3bf6f59bfe1e'
     ));
   curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
   $json = curl_exec($ch);
