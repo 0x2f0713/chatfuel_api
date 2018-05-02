@@ -4,7 +4,7 @@
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, 'https://linksvip.net/GetLinkFs');
   curl_setopt($ch, CURLOPT_POST, 1);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, ture);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Host: linksvip.net',
     'Accept: application/json, text/javascript, */*; q=0.01',
