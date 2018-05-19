@@ -10,5 +10,8 @@ $rep  = array(
 		)
 );
 echo json_encode($rep);
+array(
+'Helo' => 123,
+'Abcjskjkajska' => 83483);
 
 ?>
